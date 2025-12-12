@@ -13,7 +13,8 @@ Timer Watch is a Krita plugin and is a Time Management Tool.
 * Alarm
 * Read the ![wiki](https://github.com/EyeOdin/timer_watch/wiki) for more information
 
-# Preview
+# Shortened Stopwatch
+
 ![Picture](https://raw.githubusercontent.com/10zindraws/timer_watch_short/master/timer_watch/PREVIEWS/tw_stopwatch_before.png)
 
 ![Picture](https://raw.githubusercontent.com/10zindraws/timer_watch_short/master/timer_watch/PREVIEWS/tw_stopwatch_after.png)
@@ -26,6 +27,7 @@ Support with donations to keep the project alive and maintained.
 <a href="https://www.paypal.com/donate/?hosted_button_id=9FARNUYBC9R3J">
   <img src="https://pics.paypal.com/00/s/NjA2OWU0ZmEtNjQ4MC00MWZhLTk5YzctM2VhZDA1MzgyMDQ0/file.PNG" width="200" alt="Donation Link">
 </a>
+
 
 
 
