@@ -7,7 +7,7 @@
     <x>0</x>
     <y>0</y>
     <width>500</width>
-    <height>200</height>
+    <height>220</height>
    </rect>
   </property>
   <layout class="QVBoxLayout" name="imagineboard_widget_layout">
@@ -37,6 +37,7 @@
      <property name="frameShape">
       <enum>QFrame::NoFrame</enum>
      </property>
+
     </widget>
    </item>
    <item>
@@ -195,8 +196,8 @@
               </property>
               <property name="maximumSize">
                <size>
-                <width>20</width>
-                <height>20</height>
+                <width>30</width>
+                <height>30</height>
                </size>
               </property>
               <property name="focusPolicy">
@@ -229,8 +230,8 @@
               </property>
               <property name="maximumSize">
                <size>
-                <width>20</width>
-                <height>20</height>
+                <width>30</width>
+                <height>30</height>
                </size>
               </property>
               <property name="focusPolicy">
@@ -238,40 +239,6 @@
               </property>
               <property name="text">
                <string/>
-              </property>
-              <property name="flat">
-               <bool>true</bool>
-              </property>
-             </widget>
-            </item>
-            <item>
-             <widget class="QPushButton" name="alarm">
-              <property name="sizePolicy">
-               <sizepolicy hsizetype="Fixed" vsizetype="Fixed">
-                <horstretch>0</horstretch>
-                <verstretch>0</verstretch>
-               </sizepolicy>
-              </property>
-              <property name="minimumSize">
-               <size>
-                <width>0</width>
-                <height>0</height>
-               </size>
-              </property>
-              <property name="maximumSize">
-               <size>
-                <width>20</width>
-                <height>20</height>
-               </size>
-              </property>
-              <property name="focusPolicy">
-               <enum>Qt::NoFocus</enum>
-              </property>
-              <property name="text">
-               <string/>
-              </property>
-              <property name="checkable">
-               <bool>true</bool>
               </property>
               <property name="flat">
                <bool>true</bool>
@@ -292,13 +259,13 @@
            <property name="minimumSize">
             <size>
              <width>0</width>
-             <height>20</height>
+             <height>30</height>
             </size>
            </property>
            <property name="maximumSize">
             <size>
              <width>16777215</width>
-             <height>20</height>
+             <height>30</height>
             </size>
            </property>
            <layout class="QHBoxLayout" name="horizontal_layout">
@@ -328,13 +295,13 @@
               <property name="minimumSize">
                <size>
                 <width>0</width>
-                <height>20</height>
+                <height>30</height>
                </size>
               </property>
               <property name="maximumSize">
                <size>
                 <width>16777215</width>
-                <height>20</height>
+                <height>30</height>
                </size>
               </property>
               <property name="lineWidth">
@@ -359,13 +326,13 @@
               <property name="minimumSize">
                <size>
                 <width>0</width>
-                <height>20</height>
+                <height>30</height>
                </size>
               </property>
               <property name="maximumSize">
                <size>
                 <width>180</width>
-                <height>20</height>
+                <height>30</height>
                </size>
               </property>
               <property name="frame">
@@ -378,9 +345,24 @@
                <enum>QAbstractSpinBox::NoButtons</enum>
               </property>
               <property name="displayFormat">
-               <string>HH:mm:ss</string>
+               <string>mm:ss</string>
               </property>
+			  <property name="font">
+				<font>
+				 <pointsize>12</pointsize>
+				</font>
+			   </property>
+				<property name="styleSheet">
+				<string>
+					QTimeEdit {
+						qproperty-alignment: 'AlignCenter';
+						padding-top: -7px;
+						padding-bottom: 0px;
+					}
+				</string>
+			</property>
              </widget>
+
             </item>
            </layout>
           </widget>
@@ -395,14 +377,14 @@
            </property>
            <property name="minimumSize">
             <size>
-             <width>20</width>
-             <height>20</height>
+             <width>30</width>
+             <height>30</height>
             </size>
            </property>
            <property name="maximumSize">
             <size>
-             <width>20</width>
-             <height>20</height>
+             <width>30</width>
+             <height>30</height>
             </size>
            </property>
            <property name="focusPolicy">
