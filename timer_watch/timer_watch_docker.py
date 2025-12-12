@@ -91,7 +91,6 @@ class TimerWatch_Docker( DockWidget ):
         # Stopwatch
         self.sw_state = False
         self.sw_counter = QTime( 0,0 )
-        self.sw_alarm = False
         self.sw_limit = 0
         # Alarm
         self.alarm_message = message
@@ -99,7 +98,6 @@ class TimerWatch_Docker( DockWidget ):
         # Layout
         self.layout.start_pause.toggled.connect( self.SW_StartPause )
         self.layout.reset.clicked.connect( self.SW_Reset )
-        self.layout.alarm.clicked.connect( self.SW_Alarm )
         self.layout.time_limit.timeChanged.connect( self.SW_TimeEdit )
         self.layout.settings.clicked.connect( self.Menu_Settings )
 
@@ -115,13 +113,11 @@ class TimerWatch_Docker( DockWidget ):
         # Icons
         self.layout.start_pause.setIcon( Krita.instance().icon( 'media-playback-start' ) ) # media-playback-stop
         self.layout.reset.setIcon( Krita.instance().icon( 'fileLayer' ) )
-        self.layout.alarm.setIcon( Krita.instance().icon( 'paintbrush' ) )
         self.layout.settings.setIcon( Krita.instance().icon( 'settings-button' ) )
 
         # ToolTips
         self.layout.start_pause.setToolTip( "Start" )
         self.layout.reset.setToolTip( "Reset" )
-        self.layout.alarm.setToolTip( "Alarm" )
         self.layout.time_limit.setToolTip( "Time Limit" )
         self.layout.settings.setToolTip( "Settings" )
 
@@ -181,7 +177,7 @@ class TimerWatch_Docker( DockWidget ):
             self.layout.lcd_number.setDigitCount( 5 )  # 5=hh:mm 8=hh:mm:ss
         # Stopwatch
         elif index == 1:
-            self.layout.lcd_number.setDigitCount( 8 )
+            self.layout.lcd_number.setDigitCount( 5 )
 
         # update cycle
         if self.mode_index != index: # After a search with null results this ensure other modes update
@@ -291,7 +287,7 @@ class TimerWatch_Docker( DockWidget ):
             if photoshoot == True:self.layout.lcd_number.display( str( '00:00' ) ) # for preview photo
             else:self.layout.lcd_number.display( str( self.clock_time.toString( 'hh:mm' ) ) )
         if self.mode_index == 1:
-            self.layout.lcd_number.display( str( self.sw_counter.toString( 'hh:mm:ss' ) ) )
+            self.layout.lcd_number.display( str( self.sw_counter.toString( 'mm:ss' ) ) )
 
     #endregion
     #region Stopwatch
@@ -321,7 +317,7 @@ class TimerWatch_Docker( DockWidget ):
         counter = self.hms_to_time( self.sw_counter.hour(), self.sw_counter.minute(), self.sw_counter.second() )
         self.layout.progress_bar.setValue( counter )
         # Alarm
-        if ( self.sw_alarm == True and counter == self.sw_limit and counter != 0 and self.sw_limit != 0 ):
+        if ( counter == self.sw_limit and counter != 0 and self.sw_limit != 0 ):
             self.Message_Warnning( "MESSAGE", f"\n{ self.alarm_message }" )
     def SW_StartPause( self, boolean ):
         # Variable
@@ -345,12 +341,6 @@ class TimerWatch_Docker( DockWidget ):
         self.layout.start_pause.setChecked( False )
         self.Widget_Enable( True )
         self.Number_Display()
-    def SW_Alarm( self, boolean ):
-        self.sw_alarm = boolean
-        if boolean == True:
-            self.layout.alarm.setIcon( Krita.instance().icon( 'warning' ) )
-        else:
-            self.layout.alarm.setIcon( Krita.instance().icon( 'paintbrush' ) )
     def SW_TimeEdit( self ):
         # Variable
         qtime = self.layout.time_limit.time()
@@ -360,7 +350,6 @@ class TimerWatch_Docker( DockWidget ):
         Krita.instance().writeSetting( "Timer Watch", "sw_limit", str( self.sw_limit ) )
 
     def Widget_Enable( self, boolean ):
-        self.layout.alarm.setEnabled( boolean )
         self.layout.time_limit.setEnabled( boolean )
         self.layout.settings.setEnabled( boolean )
     def hms_to_time( self, h, m, s ):
